@@ -2,6 +2,7 @@ var config = require("../../shared/config");
 var fetchModule = require("fetch");
 var ObservableArray = require("data/observable-array").ObservableArray;
 var parseString = require('nativescript-xml2js').parseString;
+var htmlparser = require("htmlparser");
 
 
 function MainViewModel(items) {
@@ -79,18 +80,49 @@ async function parseResponse(response) {
 
 async function parseHtml(response) {
     var result;
-    //console.dir(response);
-    await parseString(response, function (err, res) {
-        console.dir(res);
-        // resp = result.rss.channel[0].item;
-        result = {
-            text: res.p._,
-            image_src: res.p.img[0].$.src
-        };
-        
+
+    var handler = new htmlparser.DefaultHandler(function () {});
+    var parser = new htmlparser.Parser(handler);
+    parser.parseComplete(response);
+    var image_src = '';
+    var text = '';
+    handler.dom.forEach(function(item){
+        if(item.type == 'tag'){
+            if(item.children){
+                item.children.forEach(function(child){
+                    if(child.type == 'tag' && child.name == 'img'){
+                        image_src = child.attribs.src;
+                    }
+                    if(child.type == 'text'){
+                        text = child.data;
+                    }
+                })
+            }
+        }
     });
+
+    result = {
+        text: text,
+        image_src: image_src
+    }
+
     return result;
 }
+
+// async function parseHtml(response) {
+//     var result;
+//     //console.dir(response);
+//     await parseString(response, function (err, res) {
+//         console.dir(res);
+//         // resp = result.rss.channel[0].item;
+//         result = {
+//             text: res.p._,
+//             image_src: res.p.img[0].$.src
+//         };
+        
+//     });
+//     return result;
+// }
 
 // function getMessage(counter) {
 //     if (counter <= 0) {

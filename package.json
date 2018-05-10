@@ -10,6 +10,7 @@
     }
   },
   "dependencies": {
+    "htmlparser": "^1.7.7",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-xml2js": "^0.5.2",
     "tns-core-modules": "^4.0.0",
