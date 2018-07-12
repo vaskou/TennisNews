@@ -8,7 +8,7 @@
 android {  
   defaultConfig {  
     generatedDensities = []
-    applicationId = "org.nativescript.TennisNews" 
+    applicationId = "__PACKAGE__" 
     
     //override supported platforms
     // ndk {
@@ -21,10 +21,3 @@ android {
     additionalParameters "--no-version-vectors"  
   }  
 } 
-
-def settingsGradlePath = "$rootDir/../../app/App_Resources/Android/settings.gradle";
-def settingsGradleFile = new File(settingsGradlePath);
-if(settingsGradleFile.exists())
-{
-    apply from: settingsGradleFile;
-}
