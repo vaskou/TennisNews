@@ -17,8 +17,17 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
             </StackLayout>
 
             <ScrollView row="1">
-                <StackLayout class="sidedrawer-content">
-                    <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Home' ? ' selected': '') }}"
+                <!-- <StackLayout class="sidedrawer-content"> -->
+                    <ListView id="pagesListView" items="{{ pagesList }}" class="sidedrawer-content"> 
+                        <ListView.itemTemplate>
+                            <StackLayout class="{{ 'sidedrawer-list-item'  }} p-10" title="{{ name }}" url="{{ url }}"
+                                route="home/home-page"  
+                                tap="onNavigationItemTap">
+                                <Label text="{{ name }}" class="p-r-10" />
+                            </StackLayout>
+                        </ListView.itemTemplate>
+                    </ListView>
+                    <!-- <GridLayout columns="auto, *" class="{{ 'sidedrawer-list-item' + (selectedPage === 'Home' ? ' selected': '') }}"
                         route="home/home-page" title="Home" tap="onNavigationItemTap">
                         <Label row="0" col="0" text="&#xf015;" class="fa" />
                         <Label row="0" col="1" text="Home" class="p-r-10" />
@@ -48,8 +57,8 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
                         route="settings/settings-page" title="Settings" tap="onNavigationItemTap">
                         <Label row="0" col="0" text="&#xf013;" class="fa" />
                         <Label row="0" col="1" text="Settings" class="p-r-10" />
-                    </GridLayout>
-                </StackLayout>
+                    </GridLayout> -->
+                <!-- </StackLayout> -->
             </ScrollView>
         </GridLayout>
     </nsDrawer:RadSideDrawer.drawerContent>

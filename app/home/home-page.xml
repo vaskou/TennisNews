@@ -22,8 +22,20 @@
         <Label class="action-bar-title" text="Home"></Label>
     </ActionBar>
 
-    <GridLayout class="page-content">
+    <!-- <GridLayout class="page-content">
         <Label class="page-icon fa" text="&#xf015;"></Label>
-        <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
-    </GridLayout>
+        <Label class="page-placeholder" text=" Page content goes here "></Label>
+    </GridLayout> -->
+    <StackLayout class="p-20">
+        <ListView id="mainListView" items="{{ mainList }}">
+            <ListView.itemTemplate>
+                <StackLayout>
+                    <Label class="article-title" text="{{ title }}" textWrap="true" />
+                    <!-- <WebView src="{{ description }}"></WebView> -->
+                    <Image class="article-image" src="{{ image_src }}" stretch="aspectFill" />
+                    <TextView class="article-text" text="{{ description }}" editable="false"></TextView>
+                </StackLayout>
+            </ListView.itemTemplate>
+        </ListView>
+    </StackLayout>
 </Page>

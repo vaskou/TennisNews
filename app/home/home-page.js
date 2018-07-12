@@ -1,10 +1,26 @@
 const app = require("application");
-
+const observableModule = require("data/observable");
 const HomeViewModel = require("./home-view-model");
 
 function onNavigatingTo(args) {
     const page = args.object;
-    page.bindingContext = new HomeViewModel();
+    // page.bindingContext = new HomeViewModel();
+
+    var mainList$ = new HomeViewModel([]);
+
+    var pageData = new observableModule.fromObject({
+        mainList: mainList$
+    });
+    
+    page.bindingContext = pageData;
+
+    var navigationUrl = '';
+    if(typeof page.navigationContext !== "undefined") {
+        navigationUrl = page.navigationContext.url;
+    }
+
+    mainList$.empty();
+    mainList$.load(navigationUrl);
 }
 
 function onDrawerButtonTap(args) {
