@@ -29,7 +29,7 @@
     <StackLayout class="p-20">
         <ListView id="mainListView" items="{{ mainList }}">
             <ListView.itemTemplate>
-                <StackLayout>
+                <StackLayout tap="onTap" data_link="{{ link }}">
                     <Label class="article-title" text="{{ title }}" textWrap="true" />
                     <!-- <WebView src="{{ description }}"></WebView> -->
                     <Image class="article-image" src="{{ image_src }}" stretch="aspectFill" />

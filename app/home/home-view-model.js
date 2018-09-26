@@ -57,6 +57,7 @@ async function parseRss(response) {
 
                 result.push({
                     title: item.title[0],
+                    link: item.link[0],
                     description: res.text,
                     image_src: res.image_src
                 });

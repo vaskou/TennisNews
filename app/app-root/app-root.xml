@@ -11,9 +11,9 @@ http://docs.telerik.com/devtools/nativescript-ui/Controls/NativeScript/SideDrawe
     <nsDrawer:RadSideDrawer.drawerContent>
         <GridLayout rows="auto, *" class="sidedrawer sidedrawer-left">
             <StackLayout class="sidedrawer-header">
-                <Label class="sidedrawer-header-image fa" text="&#xf2bd;" />
+                <!-- <Label class="sidedrawer-header-image fa" text="&#xf2bd;" />
                 <Label class="sidedrawer-header-brand" text="User Name" />
-                <Label class="footnote" text="username@mail.com" />
+                <Label class="footnote" text="username@mail.com" /> -->
             </StackLayout>
 
             <ScrollView row="1">

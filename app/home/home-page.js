@@ -1,6 +1,7 @@
 const app = require("application");
 const observableModule = require("data/observable");
 const HomeViewModel = require("./home-view-model");
+var utilityModule = require("utils/utils");
 
 function onNavigatingTo(args) {
     const page = args.object;
@@ -28,5 +29,12 @@ function onDrawerButtonTap(args) {
     sideDrawer.showDrawer();
 }
 
+function onTap(args) {
+    const button = args.object;
+    utilityModule.openUrl(button.data_link);
+}
+
+
 exports.onNavigatingTo = onNavigatingTo;
 exports.onDrawerButtonTap = onDrawerButtonTap;
+exports.onTap = onTap;
